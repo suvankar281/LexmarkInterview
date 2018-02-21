@@ -1,19 +1,27 @@
 public class PrintQueue {
 private Node head;
-  public PrintQueue(Document doc) {
-    Node nodeToAdd
-        = new Node();
-    nodeToAdd.setData(doc);
-    nodeToAdd.setNode(null);
+
+  public PrintQueue() {
+  }
+
+  public void PrintQueue(Document doc) {
+    Node newNode = new Node();
+    newNode.setData(doc);
+    newNode.setNode(null);
 
     if (this.head == null) {
-      this.head = nodeToAdd;
-    }
-    Node temp = this.head;
-    while (temp.getNext() != null) {
-      temp = temp.getNext();
+      head = newNode;
+    } else {
+      Node temp = this.head;
+      while (temp.getNext() != null) {
+        temp = temp.getNext();
+
+      }
+      temp.setNode(newNode);
+
     }
   }
+
 public  void push(Document doc) {
 
 
@@ -42,6 +50,10 @@ public  void push(Document doc) {
       }
     }
       public void  displayContents(){
+  if (this.head==null){
+    throw new NullPointerException();
+  }
+
   Node temp=this.head;
        while(temp.getNext()!=null)
        {
@@ -55,14 +67,7 @@ public  void push(Document doc) {
 
 
 
-public static void main(String args[]){
-  PrintQueue printQueue=new PrintQueue(new WordDocument("newDoc"));
-  printQueue.push(new PdfDocument("pdf"));
-printQueue.displayContents();
-System.out.println(printQueue.pop());
-  printQueue.displayContents();
 
-  }
 
 
 }
